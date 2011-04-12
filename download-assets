@@ -1,0 +1,3 @@
+#!/bin/sh
+wget -rc -l1 -nH -A .png --restrict-file-names=nocontrol http://techmeat.ru/img/
+wget -rc -l1 -nH -A .wav --restrict-file-names=nocontrol http://techmeat.ru/snd/
