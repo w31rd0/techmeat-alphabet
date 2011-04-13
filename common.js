@@ -1,5 +1,29 @@
 (function ($) {
+    var createAudio = function (url) {
+        return $(document.createElement('embed')).attr({
+            src: url,
+            autostart: 'true',
+            loop: 'false'
+        });
+    }
+    // check if <audio> is supported and able to play our media
+    if (!!document.createElement('audio').canPlayType) {
+        $(document.createElement('audio'))
+            .attr('src', 'snd/а.wav')
+            .bind('loadeddata', function (e) {
+                createAudio = function (url) {
+                    return $(document.createElement('audio')).attr({
+                        src: url,
+                        autoplay: 'true'
+                    });
+                }
+            });
+    }
+    function playSound(url) {
+        $('#dummyspan').empty().append(createAudio(url));
+    }
     $('li').click(function () {
+        playSound($(this).find('span').attr('data-sound-url'));
         $(this).addClass('clicked');
         $(this).find('b').fadeIn(300);
         $(this).find('i').animate({
@@ -12,8 +36,9 @@
             setTimeout(function () {
                 $('#winCont').fadeIn(300);
                 $('#dummyspan').html("<embed src='snd/Молодец.wav' hidden=true autostart=true loop=false>");
+                playSound('snd/Молодец.wav');
                 $('#winCont span').click(function () {
-                    $('#dummyspan').html("<embed src='snd/Попробуй_ещё.wav' hidden=true autostart=true loop=false>");
+                    playSound('snd/Попробуй_ещё.wav');
                     $('#winCont').fadeOut(300);
                     $('#dummyspan').html();
                     $('li').removeClass('clicked');

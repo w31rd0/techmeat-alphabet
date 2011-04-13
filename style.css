@@ -74,7 +74,7 @@ b {
     height:100px;
     background:url('img/default.png') no-repeat 50% 50%;
 }
-
+embed, audio {width: 0; height: 0;}
 
 #winCont {
     display:none;
