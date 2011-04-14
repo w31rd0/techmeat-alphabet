@@ -35,7 +35,6 @@
         if($('li:not(.clicked)').length === 0) {
             setTimeout(function () {
                 $('#winCont').fadeIn(300);
-                $('#dummyspan').html("<embed src='snd/Молодец.wav' hidden=true autostart=true loop=false>");
                 playSound('snd/Молодец.wav');
                 $('#winCont span').click(function () {
                     playSound('snd/Попробуй_ещё.wav');
